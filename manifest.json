@@ -1,0 +1,21 @@
+{
+    "manifest_version": 2,
+    "name": "Powerbookmark",
+    "version": "1.0",
+
+    "description": "Tag-based bookmarking system",
+
+    "icons": {
+        "48": "ico48.png",
+        "96": "ico48.png"
+    },
+
+    "permissions": ["tabs", "storage"],
+
+    "browser_action": {
+        "default_icon": "ico48.png",
+        "default_title": "Powerbookmark",
+        "default_popup": "pages/set.html"
+    }
+}
+

@@ -1,0 +1,29 @@
+#search div {
+    display: flex;
+}
+
+#search label {
+    width: 6em;
+}
+
+#search input {
+    flex-grow: 1;
+}
+
+.entry {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2.5fr;
+    gap: 0.5em;
+    padding: 0.5em;
+    border-bottom: 1px solid #ccc;
+    align-items: start;
+    user-select: none;
+}
+
+.entry > div {
+    overflow-wrap: anywhere;
+}
+
+.entry:hover {
+    background-color: grey;
+}

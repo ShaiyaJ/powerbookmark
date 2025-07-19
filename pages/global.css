@@ -1,0 +1,8 @@
+body {
+    padding: 0 1%;
+    margin: 0 1%;
+}
+
+textarea, input {
+    width: 100%;
+}
