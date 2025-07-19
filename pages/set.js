@@ -35,13 +35,16 @@ window.onload = () => {
                 _ = new URL(URL_INPUT.value);
                 
                 // Processing TAG_INPUT to create an array of strings
-                tags = TAGS_INPUT.value.split(",")  // Tags are separated by ","
-                    .map(tag => tag.trim())         // then trimmed to allow for either "," or ", " when separating tags
-                    .filter(tag => tag !== "");     // then compared to disallow "" to count as a separate tag
+                const ban = ["(", ")"];
+                tags = TAGS_INPUT.value.split(",")                      // Tags are separated by ","
+                    .map(tag => tag.trim())                             // then trimmed to allow for either "," or ", " when separating tags
+                    .filter(tag => tag !== "")                          // then compared to disallow "" to count as a separate tag
+                    .filter(tag => !ban.some(c => tag.includes(c)));    // then banned characters are filtered out
                 
                 // Updating PBMState and commiting changes to storage
                 PBMState.setUrl(URL_INPUT.value, NAME_INPUT.value, tags);
                 PBMState.save();
+                window.close();
             } catch (_) {
                 // TODO: error message
                 console.error("Failed to add bookmark due to an invalid URL");

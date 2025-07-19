@@ -5,11 +5,10 @@ window.onload = () => {
     const SUBMIT_BUTTON = document.getElementById("submit-search");
     const RESULTS_AREA  = document.getElementById("results");
 
-    // Updating active state - then setting up the bindings ensures that access to the most
-    // recent version of the app is avaliable.
-    PBMState.update().then(_ => {
+    SUBMIT_BUTTON.onclick = () => {
+        // Updating active state - ensures that access to the most recent version of the app state is avaliable.
+        PBMState.update().then(_ => {
 
-        SUBMIT_BUTTON.onclick = () => {
             // Process TAG_INPUT into tokens
             const tagTokens = TAGS_INPUT.value.split(" ")
                 .map(tag => tag.trim())
@@ -94,19 +93,25 @@ window.onload = () => {
                 return totalA - totalB;
             });
             
-            // Add rankings of these two and display
+            // Update results area with results
             RESULTS_AREA.innerHTML = "";
             
             filtered.forEach((url, i) => {                
                 const entry = document.createElement("div");
                 entry.classList.add("entry");
                 
+                const removeButton = document.createElement("button");
                 const nameDisplay = document.createElement("div");
-                nameDisplay.classList.add("name-display");
                 const urlDisplay = document.createElement("div");
-                urlDisplay.classList.add("url-display");
                 const tagsDisplay = document.createElement("div");
-                tagsDisplay.classList.add("tags-display")
+                tagsDisplay.classList.add("tags-display");
+                
+                removeButton.onclick = (e) => {
+                    e.stopPropagation();
+                    entry.remove();
+                    PBMState.removeUrl(url);
+                    PBMState.save();    
+                }
                 
                 entry.onclick = () => {
                     browser.tabs.create({
@@ -116,17 +121,23 @@ window.onload = () => {
                 
                 const urlEntry = PBMState.getUrl(url);
                 
+                removeButton.innerText = "X"
                 nameDisplay.innerText = urlEntry.name;
                 urlDisplay.innerText = url;
-                tagsDisplay.innerText = [...urlEntry.tags];
+                urlEntry.tags.forEach(tag => {
+                    const tagDiv = document.createElement("div");
+                    tagDiv.innerText = tag;
+                    tagsDisplay.appendChild(tagDiv);
+                });
                 
+                entry.appendChild(removeButton);
                 entry.appendChild(nameDisplay);
                 entry.appendChild(urlDisplay);
                 entry.appendChild(tagsDisplay);
                 RESULTS_AREA.appendChild(entry);
             });
-        }
-    });
+        });
+    }
 }
 
 function infixToPostfix(queryTokens) {

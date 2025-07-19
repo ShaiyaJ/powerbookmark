@@ -1,8 +1,75 @@
+:root {
+    --text-light: #1E1E1E;
+    --primary-light: #A96AE0;
+    --secondary-light: #D8B4F8;
+    --background-light: #FFFFFF;
+    
+    --text-dark: #F0F0F0;
+    --primary-dark: #C9A3F5;
+    --secondary-dark: #6B32A3;
+    --background-dark: #121212;
+    
+    --text: var(--text-light);
+    --primary: var(--primary-light);
+    --secondary: var(--secondary-light);
+    --background: var(--background-light);
+    
+    font-family: sans-serif;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 body {
-    padding: 0 1%;
+    padding: 10px;
     margin: 0 1%;
+    
+    background-color: var(--background);
+}
+
+label {
+    display: flex;
+    align-items: center;
 }
 
 textarea, input {
     width: 100%;
+    
+    border-style: solid;
+    border-color: var(--primary);
+    border-radius: 4px;
+    
+    outline: none;
+    box-shadow: none;
+    
+    margin: 5px 0px;
+    
+    background-color: var(--background);
+}
+
+textarea:hover, input:hover {
+    background-color: var(--secondary);
+}
+
+textarea:focus, input:focus {
+    border-color: var(--secondary);
+    background-color: var(--background);
+}
+
+button {
+    border-style: none;
+    border-radius: 4px;
+    
+    padding: 0.5em;
+    
+    background-color: var(--secondary);
+}
+
+button:hover {    
+    background-color: var(--primary);
+}
+
+button:click {    
+    background-color: var(--primary);
 }

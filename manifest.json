@@ -6,14 +6,14 @@
     "description": "Tag-based bookmarking system",
 
     "icons": {
-        "48": "ico48.png",
-        "96": "ico48.png"
+        "48": "logopowerbookmark.png",
+        "96": "logopowerbookmark.png"
     },
 
     "permissions": ["tabs", "storage"],
 
     "browser_action": {
-        "default_icon": "ico48.png",
+        "default_icon": "logopowerbookmark.png",
         "default_title": "Powerbookmark",
         "default_popup": "pages/set.html"
     }
