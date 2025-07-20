@@ -13,6 +13,10 @@
     --primary: var(--primary-light);
     --secondary: var(--secondary-light);
     --background: var(--background-light);
+    --error: #A90000;
+    --error-secondary: #DD9999;
+    --error-hover: #EEBBBB;
+    --error-text: #AA0000;
     
     font-family: sans-serif;
 }
@@ -73,3 +77,16 @@ button:hover {
 button:click {    
     background-color: var(--primary);
 }
+
+.error {
+    border-style: solid;
+    border-radius: 4px;
+    border-color: var(--error);
+    background-color: var(--error-secondary);
+    color: var(--error-text);
+}
+
+.error:hover {
+    background-color: var(--error-hover);
+}
+

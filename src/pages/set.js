@@ -26,6 +26,8 @@ window.onload = () => {
                 NAME_INPUT.value = "";
                 TAGS_INPUT.value = "";
             }
+
+            URL_INPUT.classList.remove("error");    // Removing error style if there is one
         }
 
 
@@ -35,7 +37,8 @@ window.onload = () => {
                 _ = new URL(URL_INPUT.value);
                 
                 // Processing TAG_INPUT to create an array of strings
-                const ban = ["(", ")"];
+                const ban = ["(", ")", " "];
+
                 tags = TAGS_INPUT.value.split(",")                      // Tags are separated by ","
                     .map(tag => tag.trim())                             // then trimmed to allow for either "," or ", " when separating tags
                     .filter(tag => tag !== "")                          // then compared to disallow "" to count as a separate tag
@@ -46,8 +49,7 @@ window.onload = () => {
                 PBMState.save();
                 window.close();
             } catch (_) {
-                // TODO: error message
-                console.error("Failed to add bookmark due to an invalid URL");
+                URL_INPUT.classList.add("error");
             }
         }
         

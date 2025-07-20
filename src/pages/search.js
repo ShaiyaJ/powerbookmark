@@ -5,7 +5,11 @@ window.onload = () => {
     const SUBMIT_BUTTON = document.getElementById("submit-search");
     const RESULTS_AREA  = document.getElementById("results");
 
-    SUBMIT_BUTTON.onclick = () => {
+    TAGS_INPUT.oninput = () => {
+        TAGS_INPUT.classList.remove("error");    // Removing error style if it exists
+    }
+
+    SUBMIT_BUTTON.onclick = () => {                // TODO: split into seprate functions even if they aren't going to be reused
         // Updating active state - ensures that access to the most recent version of the app state is avaliable.
         PBMState.update().then(_ => {
 
@@ -41,19 +45,25 @@ window.onload = () => {
                 let stack = [];
                 
                 while (rpnOperations.length != 0) {
-                    const op = rpnOperations.pop()
-                    switch (op) {
-                        case "&":
-                            stack.push( PBMState.and(stack.pop(), stack.pop()) );
-                            break;
-                        case "|":
-                            stack.push( PBMState.or(stack.pop(), stack.pop()) );
-                            break;
-                        default:
-                            stack.push(     // Evaluating !tag and tag separately
-                                op.startsWith("!") ? PBMState.withoutTag(op.substring(1)) : PBMState.withTag(op)
-                            );
-                            break;
+                    try {
+                        const op = rpnOperations.pop()
+
+                        switch (op) {
+                            case "&":
+                                stack.push( PBMState.and(stack.pop(), stack.pop()) );
+                                break;
+                            case "|":
+                                stack.push( PBMState.or(stack.pop(), stack.pop()) );
+                                break;
+                            default:
+                                stack.push(     // Evaluating !tag and tag separately
+                                    op.startsWith("!") ? PBMState.withoutTag(op.substring(1)) : PBMState.withTag(op)
+                                );
+                                break;
+                        }
+                    } catch (e) {               // If an error happens during evaluation, communicate this with the user and end execution early
+                        TAGS_INPUT.classList.add("error");
+                        return;
                     }
                 }
                 
@@ -96,7 +106,7 @@ window.onload = () => {
             // Update results area with results
             RESULTS_AREA.innerHTML = "";
             
-            filtered.forEach((url, i) => {                
+            filtered.forEach((url, i) => {
                 const entry = document.createElement("div");
                 entry.classList.add("entry");
                 
@@ -139,6 +149,7 @@ window.onload = () => {
         });
     }
 }
+
 
 function infixToPostfix(queryTokens) {
     const operations = {
@@ -225,6 +236,7 @@ function levenshteinDistance(s1, s2) {
     
     return ret[s1.length-1][s2.length-1];
 }
+
 
 function levenshteinCompare(query, a, b) {
     const aDistance = levenshteinDistance(query, a);
