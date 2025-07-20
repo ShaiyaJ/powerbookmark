@@ -104,7 +104,7 @@ window.onload = () => {
             });
             
             // Update results area with results
-            RESULTS_AREA.innerHTML = "";
+            RESULTS_AREA.textContent = "";
             
             filtered.forEach((url, i) => {
                 const entry = document.createElement("div");
@@ -131,12 +131,12 @@ window.onload = () => {
                 
                 const urlEntry = PBMState.getUrl(url);
                 
-                removeButton.innerText = "X"
-                nameDisplay.innerText = urlEntry.name;
-                urlDisplay.innerText = url;
+                removeButton.textContent = "X"
+                nameDisplay.textContent = urlEntry.name;
+                urlDisplay.textContent = url;
                 urlEntry.tags.forEach(tag => {
                     const tagDiv = document.createElement("div");
-                    tagDiv.innerText = tag;
+                    tagDiv.textContent = tag;
                     tagsDisplay.appendChild(tagDiv);
                 });
                 

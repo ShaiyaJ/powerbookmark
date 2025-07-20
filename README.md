@@ -20,4 +20,6 @@ This is still being actively developed, but the core functionality is there.
 
 - [ ] Dark mode (the infrastructure for this is set up, but there is no "settings page" to access it right now)
 - [ ] Passwords (the ability to lock bookmarks behind a password - the infrastructure for this is half-baked, and there is no "settings page" to activate it)
-- [ ] Backups (the ability to quickly save/load text copies of a backup)
+- [ ] Backups (the ability to quickly save/load text copies of a backup - or even "append backups")
+- [ ] Chrome support 
+- [ ] Syncing/sharing backups between devices - which would effectively allow you to sync them (mainly targeted at people who switch between mobile and desktop or different browsers frequently)
