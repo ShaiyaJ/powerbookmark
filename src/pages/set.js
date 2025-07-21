@@ -67,7 +67,7 @@ window.onload = () => {
             const currentUrl = query[0].url;
             const searchQuery = currentUrl;
             
-            URL_INPUT.value = searchQuery;
+            URL_INPUT.value = searchQuery ? searchQuery : "";
             
             URL_INPUT.dispatchEvent(new Event("input"));    // Manually triggering oninput
         });
