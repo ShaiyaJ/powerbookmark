@@ -1,4 +1,5 @@
 <div align="center">
+    <img src="./src/logopowerbookmark.png">
     <h1>Powerbookmark</h1>
     <p>- Tag-based bookmark system -</p>
 </div>
