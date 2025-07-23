@@ -5,9 +5,17 @@ window.onload = () => {
     const SUBMIT_BUTTON = document.getElementById("submit-search");
     const RESULTS_AREA  = document.getElementById("results");
 
-    TAGS_INPUT.oninput = () => {
+    TAGS_INPUT.onkeydown = (e) => {
         TAGS_INPUT.classList.remove("error");    // Removing error style if it exists
+        
+        if (e.key == "Enter") {
+            SUBMIT_BUTTON.click();
+            e.stopPropagation();
+            e.preventDefault();
+            return false;
+        }
     }
+    
 
     SUBMIT_BUTTON.onclick = () => {                // TODO: split into seprate functions even if they aren't going to be reused
         // Updating active state - ensures that access to the most recent version of the app state is avaliable.

@@ -72,3 +72,7 @@
     padding: 0.2em 1em;
     margin: 0px 10px;
 }
+
+#tags-input {
+    resize: vertical;
+}

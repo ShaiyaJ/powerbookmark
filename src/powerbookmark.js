@@ -19,11 +19,31 @@ class URLEntry {
     }
 }
 
+function defaultConfig() {
+    return {
+        theme: "light",
+    };
+}
+
 
 class PBMState {
     static config = {};
     static urls = {};
     
+    // Config management functions
+    
+    static setConfigTheme(theme) {
+        switch (theme) {
+            case "light":
+                PBMState.config.theme = "light"
+                break;
+            case "dark":
+                PBMState.config.theme = "dark"
+                break;
+            default:
+                throw new Error("Theme is not supported");
+        }
+    }
     
     // URL management functions
     
@@ -124,7 +144,7 @@ class PBMState {
                 const deserialisedUrls = JSON.parse(state.urls ? state.urls : "{}");
                 Object.keys(deserialisedUrls).forEach(key => deserialisedUrls[key] = URLEntry.fromString(deserialisedUrls[key]));   // As URL data is encoded as a stringified JSON object, it must be deserialised separately
                 
-                PBMState.config = state.config ? state.config : {},
+                PBMState.config = state.config ? state.config : defaultConfig(),
                 PBMState.urls = deserialisedUrls
             });
     }
@@ -133,6 +153,8 @@ class PBMState {
     /// Updates localstorage to refect the contents in `PBMState`
     static async save() {
         Object.keys(PBMState.urls).forEach(key => PBMState.urls[key] = PBMState.urls[key].toString());                              // URL data is encoded as one large string object - this is to make manipulation of the state as a whole (for passwording, etc.) easier
+        
+        console.log(PBMState.config);
          
         browser.storage.local.set({
             config: PBMState.config,
@@ -140,4 +162,27 @@ class PBMState {
         });
     }
 }
+
+
+// Update CSS to reflect config
+function updateCSS() {
+    const theme = PBMState.config.theme;
+    let root = document.querySelector(":root");
+    let styles = getComputedStyle(root);
+
+    root.style.setProperty("--text", styles.getPropertyValue(`--text-${theme}`));
+    root.style.setProperty("--primary", styles.getPropertyValue(`--primary-${theme}`));
+    root.style.setProperty("--secondary", styles.getPropertyValue(`--secondary-${theme}`));
+    root.style.setProperty("--background", styles.getPropertyValue(`--background-${theme}`));
+    root.style.setProperty("--error", styles.getPropertyValue(`--error-${theme}`));
+    root.style.setProperty("--error-secondary", styles.getPropertyValue(`--error-secondary-${theme}`));
+    root.style.setProperty("--error-hover", styles.getPropertyValue(`--error-hover-${theme}`));
+    root.style.setProperty("--error-text", styles.getPropertyValue(`--error-text-${theme}`));
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    PBMState.update().then(_ => {
+        updateCSS();
+    });
+});
 

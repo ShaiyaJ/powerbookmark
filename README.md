@@ -18,7 +18,7 @@ You can clone the repo and manually add the `src/manifest.json` file.
 ## Planned features
 This is still being actively developed, but the core functionality is there.
 
-- [ ] Dark mode (the infrastructure for this is set up, but there is no "settings page" to access it right now)
+- [x] Dark mode (the infrastructure for this is set up, but there is no "settings page" to access it right now)
 - [ ] Passwords (the ability to lock bookmarks behind a password - the infrastructure for this is half-baked, and there is no "settings page" to activate it)
 - [ ] Backups (the ability to quickly save/load text copies of a backup - or even "append backups")
 - [x] Chrome support 

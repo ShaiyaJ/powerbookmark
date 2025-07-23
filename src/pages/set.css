@@ -4,7 +4,17 @@ body {
 }
 
 #search {
-    width: 100%;
+    width: 1fr;
+    flex-grow: 1;
+    margin-right: 5px;
+}
+
+#settings {
+    width: 1fr;
+}
+
+#links {
+    display: flex;
 }
 
 #tags-input {

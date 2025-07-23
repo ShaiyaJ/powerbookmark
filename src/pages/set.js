@@ -1,9 +1,10 @@
 window.onload = () => {
-    const SEARCH_BUTTON = document.getElementById("search");
-    const URL_INPUT     = document.getElementById("url-input");
-    const NAME_INPUT    = document.getElementById("name-input");
-    const TAGS_INPUT    = document.getElementById("tags-input");
-    const SUBMIT_BUTTON = document.getElementById("submit-url");
+    const SEARCH_BUTTON   = document.getElementById("search");
+    const SETTINGS_BUTTON = document.getElementById("settings");
+    const URL_INPUT       = document.getElementById("url-input");
+    const NAME_INPUT      = document.getElementById("name-input");
+    const TAGS_INPUT      = document.getElementById("tags-input");
+    const SUBMIT_BUTTON   = document.getElementById("submit-url");
 
     // Updating active state - then setting up the bindings ensures that access to the most
     // recent version of the app is avaliable.
@@ -58,6 +59,14 @@ window.onload = () => {
         SEARCH_BUTTON.onclick = () => {
             browser.tabs.create({
                 url: "/pages/search.html"
+            });
+        }
+        
+        
+        // Opening the settings window when the settings button is clicked
+        SETTINGS_BUTTON.onclick = () => {
+            browser.tabs.create({
+                url: "/pages/settings.html"
             });
         }
         

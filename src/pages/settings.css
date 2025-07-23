@@ -1,0 +1,19 @@
+#settings > div {
+    display: grid;
+    grid-template-columns: 10em 1fr;
+}
+
+#settings > div > select {
+    width: 100%;
+    
+    border-style: solid;
+    border-color: var(--primary);
+    border-radius: 4px;
+    
+    outline: none;
+    box-shadow: none;
+    
+    background-color: var(--background);
+    
+    font-size: var(--font-size);
+}
