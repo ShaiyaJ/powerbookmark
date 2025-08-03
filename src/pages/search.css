@@ -36,6 +36,10 @@
     background-color: var(--secondary);
 }
 
+.entry:hover > div {
+    background-color: var(--secondary);
+}
+
 .entry > button {
     background-color: var(--background);
     color: var(--primary);

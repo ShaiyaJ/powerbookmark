@@ -152,13 +152,14 @@ class PBMState {
 
     /// Updates localstorage to refect the contents in `PBMState`
     static async save() {
-        Object.keys(PBMState.urls).forEach(key => PBMState.urls[key] = PBMState.urls[key].toString());                              // URL data is encoded as one large string object - this is to make manipulation of the state as a whole (for passwording, etc.) easier
+        let stateCopy = {};
+        Object.keys(PBMState.urls).forEach(key => stateCopy[key] = PBMState.urls[key].toString());                              // URL data is encoded as one large string object - this is to make manipulation of the state as a whole (for passwording, etc.) easier
         
-        console.log(PBMState.config);
-         
+        console.log(stateCopy);
+        
         browser.storage.local.set({
             config: PBMState.config,
-            urls: JSON.stringify(PBMState.urls)
+            urls: JSON.stringify(stateCopy)
         });
     }
 }
