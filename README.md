@@ -24,3 +24,4 @@ This is still being actively developed, but the core functionality is there.
 - [x] Backups (the ability to quickly save/load text copies of a backup - or even "append backups")
 - [x] Chrome support 
 - [ ] Syncing/sharing backups between devices - which would effectively allow you to sync them (mainly targeted at people who switch between mobile and desktop or different browsers frequently)
+- [ ] Archive.org/Archive.ph 'ing links
