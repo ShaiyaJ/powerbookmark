@@ -1,0 +1,22 @@
+body {
+    width: 500px; 
+    height: max-content; 
+}
+
+#search {
+    width: 1fr;
+    flex-grow: 1;
+    margin-right: 5px;
+}
+
+#settings {
+    width: 1fr;
+}
+
+#links {
+    display: flex;
+}
+
+#tags-input {
+    resize: vertical;
+}

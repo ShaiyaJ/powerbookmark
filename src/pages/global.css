@@ -1,0 +1,106 @@
+:root {
+    --text-light: #1E1E1E;
+    --primary-light: #A96AE0;
+    --secondary-light: #D8B4F8;
+    --background-light: #FFFFFF;
+    --error-light: #A90000;
+    --error-secondary-light: #DD9999;
+    --error-hover-light: #EEBBBB;
+    --error-text-light: #AA0000;
+    
+    --text-dark: #F0F0F0;
+    --primary-dark: #A061E8;
+    --secondary-dark: #542780;
+    --background-dark: #121212;
+    --error-dark: #A90000;
+    --error-secondary-dark: #330000;
+    --error-hover-dark: #553333;
+    --error-text-dark: #AA5555;
+    
+    --text: var(--text-light);
+    --primary: var(--primary-light);
+    --secondary: var(--secondary-light);
+    --background: var(--background-light);
+    --error: var(--error-light);
+    --error-secondary: var(--error-secondary-light);
+    --error-hover: var(--error-hover-light);
+    --error-text: var(--error-text-light);
+    
+    --font-size: 12px;    
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: sans-serif;
+    color: var(--text);
+    background-color: var(--background);
+}
+
+body {
+    padding: 10px;
+    margin: 0 1%;
+}
+
+label {
+    display: flex;
+    align-items: center;
+    font-size: var(--font-size);
+}
+
+textarea, input {
+    width: 100%;
+    
+    border-style: solid;
+    border-color: var(--primary);
+    border-radius: 4px;
+    
+    outline: none;
+    box-shadow: none;
+    
+    margin: 5px 0px;
+    
+    background-color: var(--background);
+    
+    font-size: var(--font-size);
+}
+
+textarea:hover, input:hover {
+    background-color: var(--secondary);
+}
+
+textarea:focus, input:focus {
+    border-color: var(--secondary);
+    background-color: var(--background);
+}
+
+button {
+    border-style: none;
+    border-radius: 4px;
+    
+    padding: 0.5em;
+    
+    background-color: var(--secondary);
+    
+    font-size: var(--font-size);
+}
+
+button:hover {    
+    background-color: var(--primary);
+}
+
+button:click {    
+    background-color: var(--primary);
+}
+
+.error {
+    border-style: solid;
+    border-radius: 4px;
+    border-color: var(--error);
+    background-color: var(--error-secondary);
+    color: var(--error-text);
+}
+
+.error:hover {
+    background-color: var(--error-hover);
+}
+

@@ -1,0 +1,23 @@
+{
+    "manifest_version": 3,
+    "name": "Powerbookmark",
+    "version": "1.0",
+    "description": "Tag-based bookmarking system",
+    "icons": {
+        "48": "logopowerbookmark.png",
+        "96": "logopowerbookmark.png"
+    },
+    "permissions": ["storage"],
+    "host_permissions": ["<all_urls>"],
+    "action": {
+        "default_icon": "logopowerbookmark.png",
+        "default_title": "Powerbookmark",
+        "default_popup": "pages/set.html"
+    },
+    "web_accessible_resources": [
+        {
+            "resources": ["/polyfill.min.js"],
+            "matches": ["<all_urls>"]
+        }
+    ]
+}
